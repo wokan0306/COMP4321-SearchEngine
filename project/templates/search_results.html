@@ -1,0 +1,110 @@
+{% if search_results %}
+<div class="table-container">
+  {% for result in search_results %}
+  <div class="row-container">
+    <table class="table table-bordered">
+      <tbody>
+        <tr class="table-row">
+          <td>
+            <div>
+              <big><strong>{{ result.score }}</strong></big>
+            </div>
+          </td>
+          <td>
+            <div>
+              <big><strong>{{result.title}}</strong></big>
+            </div>
+            <div class="url-block">
+              <a href="{{ result.url | trim }}" class="external-link">{{ result.url | trim }}</a>
+            </div>
+            <div>
+              {% if result.last_modified %} {{ result.last_modified }}, {{ spaces }}{{ result.size }} {% endif %}
+            </div>
+            <div>
+              Keywords:
+              <br>
+                {% for keyword in result.keywords[:5] %} {{ keyword[0] }} {{ keyword[1] }}; {% endfor %}
+            </div>
+            {% if result.parent_links %}
+            <div>
+              Parent links:
+              <br>
+              {% for link in result.parent_links %}
+              <div>
+                <a href="{{ link | trim }}" class="external-link">{{ link | trim }}</a>
+              </div>
+              {% endfor %}
+            </div>
+            {% endif %}
+            {% if result.child_links %}
+            <div>
+              Child links:
+              <br>
+              {% for link in result.child_links %}
+              <div>
+                <a href="{{ link | trim }}" class="external-link">{{ link | trim }}</a>
+              </div>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </td>
+          <td>
+            <div class="similar-websites">
+              {% if result.page_id in other_results %}
+              <div><big>Other similar websites:</big></div>
+              <ul>
+                {% for other_result in other_results[result.page_id] %}
+                <li><a href="{{ other_result[1] }}" class="external-link">{{ other_result[0] }}</a></li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </div>
+            <button class="toggle-button">Show/Hide similar websites</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<p>No search results found.</p>
+{% endif %}
+
+<script>
+  document.addEventListener("click", function (event) {
+  const tableContainer = event.target.closest(".table-container");
+
+  if (tableContainer) {
+    const toggleButton = event.target;
+    const rowContainer = toggleButton.closest(".row-container");
+
+    if (rowContainer && toggleButton.classList.contains("toggle-button")) {
+      const similarWebsites = rowContainer.querySelector(".similar-websites");
+
+      if (similarWebsites.style.display === "none") {
+        similarWebsites.style.display = "block";
+        toggleButton.innerHTML = "Hide Similar Websites";
+      } else {
+        similarWebsites.style.display = "none";
+        toggleButton.innerHTML = "Show Similar Websites";
+      }
+    }
+  }
+});
+
+  // Get all links with class 'external-link'
+  const externalLinks = document.querySelectorAll('.external-link');
+
+  // Loop through each link and add a click event listener
+  externalLinks.forEach(link => {
+    link.addEventListener('click', event => {
+      // Prompt the user with a confirmation message
+      const confirmed = confirm('You are about to leave this website. Do you want to continue?');
+      // If the user confirms, follow the link
+      if (!confirmed) {
+        event.preventDefault();
+      }
+    });
+  });
+</script>

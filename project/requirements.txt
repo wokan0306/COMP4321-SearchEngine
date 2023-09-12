@@ -1,0 +1,7 @@
+beautifulsoup4
+flask
+flask-restful
+nltk
+numpy
+requests
+scikit-learn

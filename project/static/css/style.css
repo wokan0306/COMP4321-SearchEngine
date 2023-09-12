@@ -1,0 +1,238 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+  background-image: url('../images/background.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+h1 {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+input[type=text] {
+  padding: 0.5rem;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+button[type=submit] {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  margin-left: 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button[type=submit]:hover {
+  background-color: #0056b3;
+}
+
+ul.list-group {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.list-group-item {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.url-block {
+  font-weight: bold;
+}
+
+.size {
+  margin-left: 0.5rem;
+}
+
+.keyword-span {
+  background-color: #e9ecef;
+  border-radius: 3px;
+  padding: 3px 6px;
+  white-space: nowrap;
+}
+
+.search-input-container {
+  align-items: center;
+  min-height: 38px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+input:focus {
+  outline: none;
+}
+
+#stemmed-words::-webkit-scrollbar-thumb:focus {
+  outline: none;
+}
+
+#search-input {
+  border: none;
+  flex-grow: 1;
+  min-width: 50px;
+  outline: none;
+  padding: 0;
+}
+
+#stemmed-words {
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  border: 1px solid #ccc;
+}
+
+#stemmed-words option {
+  padding: 5px;
+}
+
+td {
+  vertical-align: middle;
+}
+
+td:first-child {
+  width: 5%; /* Adjust this value to set the width of the first table cell */
+}
+
+td:nth-child(2) {
+  width: 70%; /* Adjust this value to set the width of the second table cell */
+}
+
+td:last-child {
+  width: 25%; /* Adjust this value to set the width of the third table cell */
+}
+
+.row-container:nth-of-type(4n + 1) .table-row {
+  background-color: #f7f2e8; /* beige */
+}
+
+.row-container:nth-of-type(4n + 2) .table-row {
+  background-color: #e8f1f5; /* light blue */
+}
+
+.row-container:nth-of-type(4n + 3) .table-row {
+  background-color: #e8f5e9; /* mint green */
+}
+
+.row-container:nth-of-type(4n) .table-row {
+  background-color: #f9e7e8; /* light pink */
+}
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Adjust this value to control the space between rows */
+}
+
+.row-container {
+  border-radius: 10px; /* Adjust this value for the rounded corners */
+  overflow: hidden;
+}
+
+.row-container:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+a {
+  text-decoration: none;
+  color: blue;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#search-history {
+  margin: 2rem 0;
+  padding: 1rem;
+  border: 1px solid #ddd;
+}
+
+@media (max-width: 768px) {
+  form {
+    flex-direction: column;
+  }
+
+  button[type=submit] {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+}
+
+#append-button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#append-button:hover {
+  background-color: #0056b3;
+}
+
+/* Updated styles for similar-websites and the toggle button */
+.similar-websites {
+  display: none;
+}
+
+.toggle-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 1rem 0;
+}
+
+.toggle-button:hover {
+  background-color: #0056b3;
+}
+
+/* Other styles */
+.similar-website-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #ffffff;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-radius: 5px;
+}
+
+.similar-website-item a {
+  font-weight: bold;
+}
+
+.similar-website-item span {
+  font-size: 0.9rem;
+  color: #777;
+}
